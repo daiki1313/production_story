@@ -1,0 +1,24 @@
+{
+	"name": "Rails Devcontainer",
+    // 今回はdocker-composeを利用するため、dockerComposeFileでパスを指定する
+	"dockerComposeFile": [
+		"../../docker-compose.yml"
+	],
+    // docker-compose.ymlで指定する、開発コンテナのサービス名
+	"service": "api",
+    // 自分が作業する場所を指定する
+	"workspaceFolder": "/api",
+	// コンテナ内で使う拡張機能
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"Shopify.ruby-lsp",
+				"misogi.ruby-rubocop",
+				"ms-azuretools.vscode-docker",
+                "aki77.rails-routes",
+                "aki77.rails-partial",
+                "aki77.rails-routes"
+			]
+		}
+	}
+}
