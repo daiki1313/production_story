@@ -153,6 +153,9 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails_same_site_cookie (0.1.9)
+      rack (>= 1.5)
+      user_agent_parser (~> 2.6)
     railties (7.0.8.4)
       actionpack (= 7.0.8.4)
       activesupport (= 7.0.8.4)
@@ -173,6 +176,7 @@ GEM
     timeout (0.4.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    user_agent_parser (2.18.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     websocket-driver (0.7.6)
@@ -192,6 +196,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.4, >= 7.0.4.3)
+  rails_same_site_cookie (~> 0.1.8)
   tzinfo-data
 
 RUBY VERSION

@@ -5,10 +5,9 @@ Rails.application.routes.draw do
       resources :users do
         resources :following, only: %i[index]
         resources :followers, only: %i[index]
-        resources :posts
       end
       resources :test, only: %i[index]
-      resources :posts, only: %i[index]
+      resources :posts
       resources :likes, only: %i[create destroy]
       resources :relationships, only: %i[create, destroy]
 
@@ -19,6 +18,7 @@ Rails.application.routes.draw do
       namespace :auth do
         resources :sessions, only: %i[index]
       end
+
     end
   end
 end

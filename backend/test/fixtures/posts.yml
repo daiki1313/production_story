@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  use_tool: MyText
+  content: MyText
+  is_cover: false
+  is_original: false
+  user: one
+
+two:
+  use_tool: MyText
+  content: MyText
+  is_cover: false
+  is_original: false
+  user: two

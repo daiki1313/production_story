@@ -27,7 +27,8 @@ services:
   front:
     build: ./frontend/
     volumes:
-      - ./frontend/app:/front
+      - ./frontend:/front
+    command: sh -c "npm start"
     ports:
       - 3000:3000
     tty: true
