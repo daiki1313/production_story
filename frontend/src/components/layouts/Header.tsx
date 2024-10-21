@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useRef, useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import Cookies from "js-cookie"
 
@@ -16,7 +16,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import { signOut } from "lib/api/auth"
 
 import { AuthContext } from "App"
-import { Drawer, List, ListItem, ListItemButton, ListItemText, Menu, MenuItem } from "@mui/material"
+import { Drawer, List, ListItem, ListItemButton, ListItemText} from "@mui/material"
+import HeaderMenu from "./Menu"
 
 //スタイル
 const LinkBtn = styled(Button)
@@ -38,117 +39,25 @@ const StyleTypography = styled(Typography)
 }));
 
 const Header: React.FC = () => {
-  const { loading, isSignedIn, setIsSignedIn } = useContext(AuthContext)
+  const { loading, isSignedIn, setIsSignedIn} = useContext(AuthContext)
+  const [open, setOpen] = useState<boolean>(false);
+  const anchorEl = useRef<HTMLButtonElement | null>(null);
   const navigation  = useNavigate()
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleMenuOpen = (e: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(e.currentTarget);
-  }
+    anchorEl.current = e.currentTarget as HTMLButtonElement;
+    console.log(anchorEl.current)
+    setOpen(true);
+  };
 
   const handleMenuClose = () => {
-    setAnchorEl(null);
-  }
-
-  const handleDrawerOpen = () => {
-    setDrawerOpen(true)
-  }
-
-  const handleDrawerClose = () => {
-    setDrawerOpen(false)
-  }
-
-  const handleSignOut = async (e: React.MouseEvent<HTMLElement>) => {
-    try {
-      const res = await signOut()
-
-      if (res.data.success === true) {
-        // サインアウト時には各Cookieを削除
-        Cookies.remove("_access_token")
-        Cookies.remove("_client")
-        Cookies.remove("_uid")
-
-        setIsSignedIn(false)
-        navigation("/signin")
-
-        console.log("Succeeded in sign out")
-      } else {
-        console.log("Failed in sign out")
-      }
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-  const AuthButtons = () => {
-    // 認証完了後はサインアウト用のボタンを表示
-    // 未認証時は認証用のボタンを表示
-    if (!loading) {
-      if (isSignedIn) {
-        return (
-          <>
-            <LinkBtn
-              color="inherit"
-              onClick={handleMenuOpen}
-            >
-              <PersonIcon />
-            </LinkBtn>
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleMenuClose}
-            >
-              <MenuItem onClick={handleMenuClose}>名前</MenuItem>
-              <MenuItem onClick={handleMenuClose} component={Link} to="/profile">
-                プロフィール
-              </MenuItem>
-              <MenuItem onClick={handleMenuClose} component={Link} to="/config">
-                設定
-              </MenuItem>
-              <MenuItem onClick={(e) => { handleMenuClose(); handleSignOut(e); }}>
-                LogOut
-              </MenuItem>
-            </Menu>
-          </>
-        )
-      } else {
-        return (
-          <>
-            <LinkBtn
-              component={Link}
-              to="/signin"
-              color="inherit"
-            >
-              Sign in
-            </LinkBtn>
-            <LinkBtn
-              component={Link}
-              to="/signup"
-              color="inherit"
-            >
-              Sign Up
-            </LinkBtn>
-          </>
-        )
-      }
-    } else {
-      return <></>
-    }
-  }
+    setOpen(false);
+  };
 
   return (
     <>
       <AppBar position="static">
         <Toolbar>
-          <StyleIconBtn
-            edge="start"
-            color="inherit"
-            onClick={handleDrawerOpen}
-          >
-            <MenuIcon />
-          </StyleIconBtn>
-          
           <StyleTypography
             component={Link}
             to="/"
@@ -157,27 +66,43 @@ const Header: React.FC = () => {
             制作裏話
           </StyleTypography>
 
-          <AuthButtons />
+          {
+            isSignedIn && !loading ? (
+              <>
+                <LinkBtn
+                color="inherit"
+                onClick={handleMenuOpen}
+                ref={anchorEl}
+                >
+                  <PersonIcon />
+                </LinkBtn>
 
-          {/* <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerClose} PaperProps={{style: {width: '100%'}}}>
-            <List sx={{display: 'block'}}>
-              <ListItem>
-                <ListItemButton onClick={handleDrawerClose} sx = {{textAlign: 'center', borderBottom: "solid 1px #696969"}}>
-                  <ListItemText primary={<CloseIcon />} />
-                </ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton onClick={handleDrawerClose} sx = {{textAlign: 'center', borderBottom: "solid 1px #696969"}}>
-                  <ListItemText primary={"設定"} />
-                </ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton onClick={handleDrawerClose} sx = {{textAlign: 'center', borderBottom: "solid 1px #696969"}}>
-                  <ListItemText primary={"aaa"} />
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Drawer> */}
+                <HeaderMenu
+                  anchorEl={anchorEl.current}
+                  open={open} 
+                  onClose={handleMenuClose} 
+                />
+              </>
+            ) : (
+              <>
+                <LinkBtn
+                  component={Link}
+                  to="/signin"
+                  color="inherit"
+                >
+                  Sign in
+                </LinkBtn>
+                <LinkBtn
+                  component={Link}
+                  to="/signup"
+                  color="inherit"
+                >
+                  Sign Up
+                </LinkBtn>
+              </>
+            )
+          }
+          
         </Toolbar>
       </AppBar>
     </>
