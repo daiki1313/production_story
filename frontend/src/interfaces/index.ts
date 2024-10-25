@@ -60,6 +60,7 @@ export interface PostShowParams extends PostBaseParams {
 export interface PostsParams {
   id: number
   title: string
+  content: string;
   category: string
   userName: string
 }

@@ -1,9 +1,8 @@
 import React, { useContext } from "react"
 import { AuthContext } from "App"
 
-//消す予定のHomeページだよ
-// とりあえず認証済みユーザーの名前やメールアドレスを表示
-const Home: React.FC = () => {
+//ユーザー情報＆投稿記事一覧
+const User: React.FC = () => {
   const { isSignedIn, currentUser } = useContext(AuthContext)
 
   return (
@@ -23,4 +22,4 @@ const Home: React.FC = () => {
   )
 }
 
-export default Home
+export default User

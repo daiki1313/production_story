@@ -6238,3 +6238,322 @@ Processing by DeviseTokenAuth::SessionsController#destroy as HTML
 Completed 200 OK in 58ms (Views: 0.1ms | ActiveRecord: 9.2ms | Allocations: 4793)
 
 
+Started POST "/api/v1/auth/sign_in" for 172.19.0.1 at 2024-10-21 04:57:48 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (5.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: DeviseTokenAuth::SessionsController, action: create, request: #<ActionDispatch::Request:0x00007fc8c88c9ba8>, params: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "controller"=>"devise_token_auth/sessions", "action"=>"create", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: DeviseTokenAuth::SessionsController, action: create, request: #<ActionDispatch::Request:0x00007fc8c88c9ba8>, params: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "controller"=>"devise_token_auth/sessions", "action"=>"create", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (BINARY `email` = 'daityan13@gmail.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+[31mUnpermitted parameter: :session. Context: { controller: DeviseTokenAuth::SessionsController, action: create, request: #<ActionDispatch::Request:0x00007fc8c88c9ba8>, params: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "controller"=>"devise_token_auth/sessions", "action"=>"create", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: DeviseTokenAuth::SessionsController, action: create, request: #<ActionDispatch::Request:0x00007fc8c88c9ba8>, params: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "controller"=>"devise_token_auth/sessions", "action"=>"create", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[37mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1 FOR UPDATE[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"Z8cdPshEzE5h8ZoexEe6fA\":{\"token\":\"$2a$10$XvcS0y0EqNHSlYO0LVZd7OXi2SBwPtfcYsmXpzK7FAqzbl6dYd0La\",\"expiry\":1730179646,\"previous_token\":\"$2a$10$.LEtpApPHIz0jq21IA.4geOjRooR7TfgEbIi5UjzeiExrvvi6LARe\",\"last_token\":\"$2a$10$TAmW8l743o06iLzj4KW7meqbJ32JOMttgfHht24KOl1JaFKzWoBrK\",\"updated_at\":\"2024-10-15T05:27:26Z\"},\"U-N77ocJMJWaM5I_jAmI2w\":{\"token\":\"$2a$10$5JREF6KimuXCXF/OZa5s/.pFrxtmTSjpJAdWQJmifEMoBx7nCKbkm\",\"expiry\":1730179803,\"previous_token\":\"$2a$10$BRuo8PkKyZabq.yCeBV3HerkG1eMlU.2PWXoZPmyewFflwn5KVvUS\",\"last_token\":\"$2a$10$uVF5BPQfrN6y8QqhesbEeuHlxaQGBFKdfSc7izb2fCocTLSthiFk2\",\"updated_at\":\"2024-10-15T05:30:03Z\"},\"dISHqow8IFhx7JgvAG08Qw\":{\"token\":\"$2a$10$Kf5O9Y0wtbAAZz73JgNgoeFFfs8jeeSV9Q1hF2Y60Y7XA9uO6k93m\",\"expiry\":1730180942,\"previous_token\":\"$2a$10$Bj9gJ0yaeSqjOyuH.rjChuIucPnLJzVqYGchzP5R.SLuvjsyn2pIW\",\"last_token\":\"$2a$10$wNollAsKiOhEnjXot0niXe9IvOm5WhJioCjnUHu6xtU8Pno/MctFq\",\"updated_at\":\"2024-10-15T05:49:02Z\"},\"jJ-nRZTn7MruVSM8Q2hvhA\":{\"token\":\"$2a$10$7xOmcLqndHxmVNaI4CEjdemvUXUeGvvVo5yNq3f9DqsvI7E/5Nyiq\",\"expiry\":1730187845,\"previous_token\":\"$2a$10$8tfJmQYbnkeeuBbtfA7dy.KlI7mEQai5tqZWy23Xmzhx6puQ/fHE.\",\"last_token\":\"$2a$10$5QASpvu956ofHtZhHtk.Aea72IBQxxe8EgnSHuoGrvIhiblqWHN.q\",\"updated_at\":\"2024-10-15T07:44:05Z\"},\"BeOUXomwPBOG0egtbVVODw\":{\"token\":\"$2a$10$hCwym46fYpUAR4Hy6TM9buAz9BV7.8KS63Gckya.fesSnU1UgMrPy\",\"expiry\":1730188828,\"previous_token\":\"$2a$10$HVgrZZyY1xTw.UnXdmbqX.WEsR.3jtPjrNGrtHMnmunBIOvP8CCby\",\"last_token\":\"$2a$10$AZsS3QC0tQLC4bySfoY7C.hkszf8Sk1rN3inaYX9e3IEp68alULsW\",\"updated_at\":\"2024-10-15T08:00:28Z\"},\"rDmZ4CNRxRYpvaec_i8ykg\":{\"token\":\"$2a$10$6pfqVLLf7qSNxHCbTo9S0u1JBub6GVa0gn2pVNTZS3gdeZ1GP6bni\",\"expiry\":1730450108,\"previous_token\":\"$2a$10$JU6GCJ4I11xOOpy2IF7quurGPD38T7g8Woh.D/gcsZLazZKjCg4qK\",\"last_token\":\"$2a$10$Qg7yPsYxo8IzMQwiRHtBbuZa2HWf2McxZTLTUJtoNEANnTbXenPLG\",\"updated_at\":\"2024-10-18T08:35:08Z\"},\"UnCUdL9dvSY7HMUdgsu4uA\":{\"token\":\"$2a$10$mJgrh9gzQm91o5epNpeSSOoO7GJwU.hlBMmz8azYFWYeIm5Y.qV5m\",\"expiry\":1730464918,\"previous_token\":\"$2a$10$lVuzZ9BRzjoA9/NIG1VDl.lOQKS6XEkIwWL3DLyRT/JUCMM5ddswi\",\"last_token\":\"$2a$10$x89oSjXesclDxRfWWhlMMe2mdVOuNwyHUQe0hiShXUG5e68BqI9Me\",\"updated_at\":\"2024-10-18T12:41:58Z\"},\"3TtRFGIGBYL1GK3WD1S-xg\":{\"token\":\"$2a$10$fmnqEyNC417aBwXXgP2KsuJiJMj4ARvug2Iso/y2OAUffiL2G0R4a\",\"expiry\":1730693585,\"previous_token\":\"$2a$10$CsRFsmvh965J4bDzWzIA7.6lbatHSg.49bXo.PvM0fcp9WM0cUIW6\",\"last_token\":\"$2a$10$lY9DaCbPPPyXzrqEy36jGOhjM1wWnTIAXHN1HcTNg6u1/PmtqLG6a\",\"updated_at\":\"2024-10-21T04:13:05Z\"},\"QKtNueRR_IDP-sxVClIcVg\":{\"token\":\"$2a$10$RaEoFHSuk0F/Ymg/RN/DIuG7EWh3AUUgzYWiAd9DAefvfC5WizOJq\",\"expiry\":1730694592,\"previous_token\":\"$2a$10$HrDJGVlqR.Popch6Qt5sZuy3jONZrjpLCIYkY.GmsvPC2.G9Jk08O\",\"last_token\":\"$2a$10$wieMsDEVDAQpJQ6sSMV3OeBhDTKIEdNkUE2ZJcH3SjT0JCw0leDaG\",\"updated_at\":\"2024-10-21T04:29:52Z\"},\"8tN8lbxndPxlOACLA7iM6Q\":{\"token\":\"$2a$10$jUzz/3hRo1NXKCQolQh5hOqMIPVlSgtbjjh5YoS5jN1vPKE0v3g6W\",\"expiry\":1730696269}}', `users`.`updated_at` = '2024-10-21 04:57:49.538786' WHERE `users`.`id` = 2[0m
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[37mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1 FOR UPDATE[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"Z8cdPshEzE5h8ZoexEe6fA\":{\"token\":\"$2a$10$XvcS0y0EqNHSlYO0LVZd7OXi2SBwPtfcYsmXpzK7FAqzbl6dYd0La\",\"expiry\":1730179646,\"previous_token\":\"$2a$10$.LEtpApPHIz0jq21IA.4geOjRooR7TfgEbIi5UjzeiExrvvi6LARe\",\"last_token\":\"$2a$10$TAmW8l743o06iLzj4KW7meqbJ32JOMttgfHht24KOl1JaFKzWoBrK\",\"updated_at\":\"2024-10-15T05:27:26Z\"},\"U-N77ocJMJWaM5I_jAmI2w\":{\"token\":\"$2a$10$5JREF6KimuXCXF/OZa5s/.pFrxtmTSjpJAdWQJmifEMoBx7nCKbkm\",\"expiry\":1730179803,\"previous_token\":\"$2a$10$BRuo8PkKyZabq.yCeBV3HerkG1eMlU.2PWXoZPmyewFflwn5KVvUS\",\"last_token\":\"$2a$10$uVF5BPQfrN6y8QqhesbEeuHlxaQGBFKdfSc7izb2fCocTLSthiFk2\",\"updated_at\":\"2024-10-15T05:30:03Z\"},\"dISHqow8IFhx7JgvAG08Qw\":{\"token\":\"$2a$10$Kf5O9Y0wtbAAZz73JgNgoeFFfs8jeeSV9Q1hF2Y60Y7XA9uO6k93m\",\"expiry\":1730180942,\"previous_token\":\"$2a$10$Bj9gJ0yaeSqjOyuH.rjChuIucPnLJzVqYGchzP5R.SLuvjsyn2pIW\",\"last_token\":\"$2a$10$wNollAsKiOhEnjXot0niXe9IvOm5WhJioCjnUHu6xtU8Pno/MctFq\",\"updated_at\":\"2024-10-15T05:49:02Z\"},\"jJ-nRZTn7MruVSM8Q2hvhA\":{\"token\":\"$2a$10$7xOmcLqndHxmVNaI4CEjdemvUXUeGvvVo5yNq3f9DqsvI7E/5Nyiq\",\"expiry\":1730187845,\"previous_token\":\"$2a$10$8tfJmQYbnkeeuBbtfA7dy.KlI7mEQai5tqZWy23Xmzhx6puQ/fHE.\",\"last_token\":\"$2a$10$5QASpvu956ofHtZhHtk.Aea72IBQxxe8EgnSHuoGrvIhiblqWHN.q\",\"updated_at\":\"2024-10-15T07:44:05Z\"},\"BeOUXomwPBOG0egtbVVODw\":{\"token\":\"$2a$10$hCwym46fYpUAR4Hy6TM9buAz9BV7.8KS63Gckya.fesSnU1UgMrPy\",\"expiry\":1730188828,\"previous_token\":\"$2a$10$HVgrZZyY1xTw.UnXdmbqX.WEsR.3jtPjrNGrtHMnmunBIOvP8CCby\",\"last_token\":\"$2a$10$AZsS3QC0tQLC4bySfoY7C.hkszf8Sk1rN3inaYX9e3IEp68alULsW\",\"updated_at\":\"2024-10-15T08:00:28Z\"},\"rDmZ4CNRxRYpvaec_i8ykg\":{\"token\":\"$2a$10$6pfqVLLf7qSNxHCbTo9S0u1JBub6GVa0gn2pVNTZS3gdeZ1GP6bni\",\"expiry\":1730450108,\"previous_token\":\"$2a$10$JU6GCJ4I11xOOpy2IF7quurGPD38T7g8Woh.D/gcsZLazZKjCg4qK\",\"last_token\":\"$2a$10$Qg7yPsYxo8IzMQwiRHtBbuZa2HWf2McxZTLTUJtoNEANnTbXenPLG\",\"updated_at\":\"2024-10-18T08:35:08Z\"},\"UnCUdL9dvSY7HMUdgsu4uA\":{\"token\":\"$2a$10$mJgrh9gzQm91o5epNpeSSOoO7GJwU.hlBMmz8azYFWYeIm5Y.qV5m\",\"expiry\":1730464918,\"previous_token\":\"$2a$10$lVuzZ9BRzjoA9/NIG1VDl.lOQKS6XEkIwWL3DLyRT/JUCMM5ddswi\",\"last_token\":\"$2a$10$x89oSjXesclDxRfWWhlMMe2mdVOuNwyHUQe0hiShXUG5e68BqI9Me\",\"updated_at\":\"2024-10-18T12:41:58Z\"},\"3TtRFGIGBYL1GK3WD1S-xg\":{\"token\":\"$2a$10$fmnqEyNC417aBwXXgP2KsuJiJMj4ARvug2Iso/y2OAUffiL2G0R4a\",\"expiry\":1730693585,\"previous_token\":\"$2a$10$CsRFsmvh965J4bDzWzIA7.6lbatHSg.49bXo.PvM0fcp9WM0cUIW6\",\"last_token\":\"$2a$10$lY9DaCbPPPyXzrqEy36jGOhjM1wWnTIAXHN1HcTNg6u1/PmtqLG6a\",\"updated_at\":\"2024-10-21T04:13:05Z\"},\"QKtNueRR_IDP-sxVClIcVg\":{\"token\":\"$2a$10$RaEoFHSuk0F/Ymg/RN/DIuG7EWh3AUUgzYWiAd9DAefvfC5WizOJq\",\"expiry\":1730694592,\"previous_token\":\"$2a$10$HrDJGVlqR.Popch6Qt5sZuy3jONZrjpLCIYkY.GmsvPC2.G9Jk08O\",\"last_token\":\"$2a$10$wieMsDEVDAQpJQ6sSMV3OeBhDTKIEdNkUE2ZJcH3SjT0JCw0leDaG\",\"updated_at\":\"2024-10-21T04:29:52Z\"},\"8tN8lbxndPxlOACLA7iM6Q\":{\"token\":\"$2a$10$Ft/H8Mg4Ib16lLn0g8/xqeeXi16d6UIIpitbgYmroO7ZhW6Camv5e\",\"expiry\":1730696269,\"previous_token\":\"$2a$10$jUzz/3hRo1NXKCQolQh5hOqMIPVlSgtbjjh5YoS5jN1vPKE0v3g6W\",\"updated_at\":\"2024-10-21T04:57:49Z\"}}', `users`.`updated_at` = '2024-10-21 04:57:49.601326' WHERE `users`.`id` = 2[0m
+  [1m[36mTRANSACTION (11.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 340ms (Views: 0.3ms | ActiveRecord: 27.7ms | Allocations: 26861)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-21 04:57:49 +0000
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 50ms (Views: 0.2ms | ActiveRecord: 3.4ms | Allocations: 8663)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-21 08:39:26 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-21 08:39:26 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (5.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::PostsController#index as HTML
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mPost Load (9.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+  [1m[36mUser Load (9.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.8ms)[0m  [1m[37mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1 FOR UPDATE[0m
+Completed 200 OK in 180ms (Views: 0.2ms | ActiveRecord: 14.4ms | Allocations: 25445)
+
+
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"Z8cdPshEzE5h8ZoexEe6fA\":{\"token\":\"$2a$10$XvcS0y0EqNHSlYO0LVZd7OXi2SBwPtfcYsmXpzK7FAqzbl6dYd0La\",\"expiry\":1730179646,\"previous_token\":\"$2a$10$.LEtpApPHIz0jq21IA.4geOjRooR7TfgEbIi5UjzeiExrvvi6LARe\",\"last_token\":\"$2a$10$TAmW8l743o06iLzj4KW7meqbJ32JOMttgfHht24KOl1JaFKzWoBrK\",\"updated_at\":\"2024-10-15T05:27:26Z\"},\"U-N77ocJMJWaM5I_jAmI2w\":{\"token\":\"$2a$10$5JREF6KimuXCXF/OZa5s/.pFrxtmTSjpJAdWQJmifEMoBx7nCKbkm\",\"expiry\":1730179803,\"previous_token\":\"$2a$10$BRuo8PkKyZabq.yCeBV3HerkG1eMlU.2PWXoZPmyewFflwn5KVvUS\",\"last_token\":\"$2a$10$uVF5BPQfrN6y8QqhesbEeuHlxaQGBFKdfSc7izb2fCocTLSthiFk2\",\"updated_at\":\"2024-10-15T05:30:03Z\"},\"dISHqow8IFhx7JgvAG08Qw\":{\"token\":\"$2a$10$Kf5O9Y0wtbAAZz73JgNgoeFFfs8jeeSV9Q1hF2Y60Y7XA9uO6k93m\",\"expiry\":1730180942,\"previous_token\":\"$2a$10$Bj9gJ0yaeSqjOyuH.rjChuIucPnLJzVqYGchzP5R.SLuvjsyn2pIW\",\"last_token\":\"$2a$10$wNollAsKiOhEnjXot0niXe9IvOm5WhJioCjnUHu6xtU8Pno/MctFq\",\"updated_at\":\"2024-10-15T05:49:02Z\"},\"jJ-nRZTn7MruVSM8Q2hvhA\":{\"token\":\"$2a$10$7xOmcLqndHxmVNaI4CEjdemvUXUeGvvVo5yNq3f9DqsvI7E/5Nyiq\",\"expiry\":1730187845,\"previous_token\":\"$2a$10$8tfJmQYbnkeeuBbtfA7dy.KlI7mEQai5tqZWy23Xmzhx6puQ/fHE.\",\"last_token\":\"$2a$10$5QASpvu956ofHtZhHtk.Aea72IBQxxe8EgnSHuoGrvIhiblqWHN.q\",\"updated_at\":\"2024-10-15T07:44:05Z\"},\"BeOUXomwPBOG0egtbVVODw\":{\"token\":\"$2a$10$hCwym46fYpUAR4Hy6TM9buAz9BV7.8KS63Gckya.fesSnU1UgMrPy\",\"expiry\":1730188828,\"previous_token\":\"$2a$10$HVgrZZyY1xTw.UnXdmbqX.WEsR.3jtPjrNGrtHMnmunBIOvP8CCby\",\"last_token\":\"$2a$10$AZsS3QC0tQLC4bySfoY7C.hkszf8Sk1rN3inaYX9e3IEp68alULsW\",\"updated_at\":\"2024-10-15T08:00:28Z\"},\"rDmZ4CNRxRYpvaec_i8ykg\":{\"token\":\"$2a$10$6pfqVLLf7qSNxHCbTo9S0u1JBub6GVa0gn2pVNTZS3gdeZ1GP6bni\",\"expiry\":1730450108,\"previous_token\":\"$2a$10$JU6GCJ4I11xOOpy2IF7quurGPD38T7g8Woh.D/gcsZLazZKjCg4qK\",\"last_token\":\"$2a$10$Qg7yPsYxo8IzMQwiRHtBbuZa2HWf2McxZTLTUJtoNEANnTbXenPLG\",\"updated_at\":\"2024-10-18T08:35:08Z\"},\"UnCUdL9dvSY7HMUdgsu4uA\":{\"token\":\"$2a$10$mJgrh9gzQm91o5epNpeSSOoO7GJwU.hlBMmz8azYFWYeIm5Y.qV5m\",\"expiry\":1730464918,\"previous_token\":\"$2a$10$lVuzZ9BRzjoA9/NIG1VDl.lOQKS6XEkIwWL3DLyRT/JUCMM5ddswi\",\"last_token\":\"$2a$10$x89oSjXesclDxRfWWhlMMe2mdVOuNwyHUQe0hiShXUG5e68BqI9Me\",\"updated_at\":\"2024-10-18T12:41:58Z\"},\"3TtRFGIGBYL1GK3WD1S-xg\":{\"token\":\"$2a$10$fmnqEyNC417aBwXXgP2KsuJiJMj4ARvug2Iso/y2OAUffiL2G0R4a\",\"expiry\":1730693585,\"previous_token\":\"$2a$10$CsRFsmvh965J4bDzWzIA7.6lbatHSg.49bXo.PvM0fcp9WM0cUIW6\",\"last_token\":\"$2a$10$lY9DaCbPPPyXzrqEy36jGOhjM1wWnTIAXHN1HcTNg6u1/PmtqLG6a\",\"updated_at\":\"2024-10-21T04:13:05Z\"},\"QKtNueRR_IDP-sxVClIcVg\":{\"token\":\"$2a$10$RaEoFHSuk0F/Ymg/RN/DIuG7EWh3AUUgzYWiAd9DAefvfC5WizOJq\",\"expiry\":1730694592,\"previous_token\":\"$2a$10$HrDJGVlqR.Popch6Qt5sZuy3jONZrjpLCIYkY.GmsvPC2.G9Jk08O\",\"last_token\":\"$2a$10$wieMsDEVDAQpJQ6sSMV3OeBhDTKIEdNkUE2ZJcH3SjT0JCw0leDaG\",\"updated_at\":\"2024-10-21T04:29:52Z\"},\"8tN8lbxndPxlOACLA7iM6Q\":{\"token\":\"$2a$10$BMepDMOKvcAyCGTVLs9Qc.N4ixWZOesHQ23kOSTlDItTPJiIVr5Iq\",\"expiry\":1730709566,\"previous_token\":\"$2a$10$Ft/H8Mg4Ib16lLn0g8/xqeeXi16d6UIIpitbgYmroO7ZhW6Camv5e\",\"last_token\":\"$2a$10$jUzz/3hRo1NXKCQolQh5hOqMIPVlSgtbjjh5YoS5jN1vPKE0v3g6W\",\"updated_at\":\"2024-10-21T08:39:26Z\"}}', `users`.`updated_at` = '2024-10-21 08:39:26.699164' WHERE `users`.`id` = 2[0m
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 243ms (Views: 0.6ms | ActiveRecord: 43.1ms | Allocations: 30451)
+
+
+Started GET "/api/v1/posts/2" for 172.19.0.1 at 2024-10-21 08:39:52 +0000
+Processing by Api::V1::PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 2 ORDER BY `posts`.`created_at` DESC LIMIT 1[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:23:in `show'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms | Allocations: 864)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=2):
+  
+app/controllers/api/v1/posts_controller.rb:23:in `show'
+Started GET "/api/v1/posts/2" for 172.19.0.1 at 2024-10-21 08:39:57 +0000
+Processing by Api::V1::PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 2 ORDER BY `posts`.`created_at` DESC LIMIT 1[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:23:in `show'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 800)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=2):
+  
+app/controllers/api/v1/posts_controller.rb:23:in `show'
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-21 08:40:00 +0000
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 1905)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-22 07:34:26 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-22 07:34:26 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (5.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::PostsController#index as HTML
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 209ms (Views: 0.3ms | ActiveRecord: 26.7ms | Allocations: 22137)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[37mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1 FOR UPDATE[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"Z8cdPshEzE5h8ZoexEe6fA\":{\"token\":\"$2a$10$XvcS0y0EqNHSlYO0LVZd7OXi2SBwPtfcYsmXpzK7FAqzbl6dYd0La\",\"expiry\":1730179646,\"previous_token\":\"$2a$10$.LEtpApPHIz0jq21IA.4geOjRooR7TfgEbIi5UjzeiExrvvi6LARe\",\"last_token\":\"$2a$10$TAmW8l743o06iLzj4KW7meqbJ32JOMttgfHht24KOl1JaFKzWoBrK\",\"updated_at\":\"2024-10-15T05:27:26Z\"},\"U-N77ocJMJWaM5I_jAmI2w\":{\"token\":\"$2a$10$5JREF6KimuXCXF/OZa5s/.pFrxtmTSjpJAdWQJmifEMoBx7nCKbkm\",\"expiry\":1730179803,\"previous_token\":\"$2a$10$BRuo8PkKyZabq.yCeBV3HerkG1eMlU.2PWXoZPmyewFflwn5KVvUS\",\"last_token\":\"$2a$10$uVF5BPQfrN6y8QqhesbEeuHlxaQGBFKdfSc7izb2fCocTLSthiFk2\",\"updated_at\":\"2024-10-15T05:30:03Z\"},\"dISHqow8IFhx7JgvAG08Qw\":{\"token\":\"$2a$10$Kf5O9Y0wtbAAZz73JgNgoeFFfs8jeeSV9Q1hF2Y60Y7XA9uO6k93m\",\"expiry\":1730180942,\"previous_token\":\"$2a$10$Bj9gJ0yaeSqjOyuH.rjChuIucPnLJzVqYGchzP5R.SLuvjsyn2pIW\",\"last_token\":\"$2a$10$wNollAsKiOhEnjXot0niXe9IvOm5WhJioCjnUHu6xtU8Pno/MctFq\",\"updated_at\":\"2024-10-15T05:49:02Z\"},\"jJ-nRZTn7MruVSM8Q2hvhA\":{\"token\":\"$2a$10$7xOmcLqndHxmVNaI4CEjdemvUXUeGvvVo5yNq3f9DqsvI7E/5Nyiq\",\"expiry\":1730187845,\"previous_token\":\"$2a$10$8tfJmQYbnkeeuBbtfA7dy.KlI7mEQai5tqZWy23Xmzhx6puQ/fHE.\",\"last_token\":\"$2a$10$5QASpvu956ofHtZhHtk.Aea72IBQxxe8EgnSHuoGrvIhiblqWHN.q\",\"updated_at\":\"2024-10-15T07:44:05Z\"},\"BeOUXomwPBOG0egtbVVODw\":{\"token\":\"$2a$10$hCwym46fYpUAR4Hy6TM9buAz9BV7.8KS63Gckya.fesSnU1UgMrPy\",\"expiry\":1730188828,\"previous_token\":\"$2a$10$HVgrZZyY1xTw.UnXdmbqX.WEsR.3jtPjrNGrtHMnmunBIOvP8CCby\",\"last_token\":\"$2a$10$AZsS3QC0tQLC4bySfoY7C.hkszf8Sk1rN3inaYX9e3IEp68alULsW\",\"updated_at\":\"2024-10-15T08:00:28Z\"},\"rDmZ4CNRxRYpvaec_i8ykg\":{\"token\":\"$2a$10$6pfqVLLf7qSNxHCbTo9S0u1JBub6GVa0gn2pVNTZS3gdeZ1GP6bni\",\"expiry\":1730450108,\"previous_token\":\"$2a$10$JU6GCJ4I11xOOpy2IF7quurGPD38T7g8Woh.D/gcsZLazZKjCg4qK\",\"last_token\":\"$2a$10$Qg7yPsYxo8IzMQwiRHtBbuZa2HWf2McxZTLTUJtoNEANnTbXenPLG\",\"updated_at\":\"2024-10-18T08:35:08Z\"},\"UnCUdL9dvSY7HMUdgsu4uA\":{\"token\":\"$2a$10$mJgrh9gzQm91o5epNpeSSOoO7GJwU.hlBMmz8azYFWYeIm5Y.qV5m\",\"expiry\":1730464918,\"previous_token\":\"$2a$10$lVuzZ9BRzjoA9/NIG1VDl.lOQKS6XEkIwWL3DLyRT/JUCMM5ddswi\",\"last_token\":\"$2a$10$x89oSjXesclDxRfWWhlMMe2mdVOuNwyHUQe0hiShXUG5e68BqI9Me\",\"updated_at\":\"2024-10-18T12:41:58Z\"},\"3TtRFGIGBYL1GK3WD1S-xg\":{\"token\":\"$2a$10$fmnqEyNC417aBwXXgP2KsuJiJMj4ARvug2Iso/y2OAUffiL2G0R4a\",\"expiry\":1730693585,\"previous_token\":\"$2a$10$CsRFsmvh965J4bDzWzIA7.6lbatHSg.49bXo.PvM0fcp9WM0cUIW6\",\"last_token\":\"$2a$10$lY9DaCbPPPyXzrqEy36jGOhjM1wWnTIAXHN1HcTNg6u1/PmtqLG6a\",\"updated_at\":\"2024-10-21T04:13:05Z\"},\"QKtNueRR_IDP-sxVClIcVg\":{\"token\":\"$2a$10$RaEoFHSuk0F/Ymg/RN/DIuG7EWh3AUUgzYWiAd9DAefvfC5WizOJq\",\"expiry\":1730694592,\"previous_token\":\"$2a$10$HrDJGVlqR.Popch6Qt5sZuy3jONZrjpLCIYkY.GmsvPC2.G9Jk08O\",\"last_token\":\"$2a$10$wieMsDEVDAQpJQ6sSMV3OeBhDTKIEdNkUE2ZJcH3SjT0JCw0leDaG\",\"updated_at\":\"2024-10-21T04:29:52Z\"},\"8tN8lbxndPxlOACLA7iM6Q\":{\"token\":\"$2a$10$4PPDGt.xJgbawyDt8Nwr5.PpoSb9pQ6X2.6tGanLqP78GqixcQmVO\",\"expiry\":1730792067,\"previous_token\":\"$2a$10$BMepDMOKvcAyCGTVLs9Qc.N4ixWZOesHQ23kOSTlDItTPJiIVr5Iq\",\"last_token\":\"$2a$10$Ft/H8Mg4Ib16lLn0g8/xqeeXi16d6UIIpitbgYmroO7ZhW6Camv5e\",\"updated_at\":\"2024-10-22T07:34:27Z\"}}', `users`.`updated_at` = '2024-10-22 07:34:27.476345' WHERE `users`.`id` = 2[0m
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 282ms (Views: 0.4ms | ActiveRecord: 36.0ms | Allocations: 30522)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-22 07:39:03 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-22 07:39:03 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (5.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::PostsController#index as HTML
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mPost Load (3.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 84ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 22067)
+
+
+Completed 200 OK in 154ms (Views: 0.2ms | ActiveRecord: 12.7ms | Allocations: 22790)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-22 07:58:18 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-22 07:58:18 +0000
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 2017)
+
+
+Completed 200 OK in 90ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 3526)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-22 08:06:45 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-22 08:06:45 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (7.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::Auth::SessionsController#index as HTML
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+  [1m[36mPost Load (1.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 90ms (Views: 0.3ms | ActiveRecord: 8.9ms | Allocations: 21463)
+
+
+Completed 200 OK in 168ms (Views: 0.2ms | ActiveRecord: 14.1ms | Allocations: 22640)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-22 08:23:18 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-22 08:23:18 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (5.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::Auth::SessionsController#index as HTML
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+  [1m[36mPost Load (4.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 107ms (Views: 0.3ms | ActiveRecord: 8.5ms | Allocations: 21687)
+
+
+Completed 200 OK in 184ms (Views: 0.2ms | ActiveRecord: 22.8ms | Allocations: 22867)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-23 01:02:24 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-23 01:02:24 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (6.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::PostsController#index as HTML
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  [1m[36mPost Load (1.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 161ms (Views: 0.4ms | ActiveRecord: 13.0ms | Allocations: 22136)
+
+
+Completed 200 OK in 174ms (Views: 0.2ms | ActiveRecord: 20.2ms | Allocations: 22783)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-23 01:52:08 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-23 01:52:08 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (5.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::Auth::SessionsController#index as HTML
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+  [1m[36mPost Load (2.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 106ms (Views: 0.3ms | ActiveRecord: 10.8ms | Allocations: 21431)
+
+
+Completed 200 OK in 171ms (Views: 0.2ms | ActiveRecord: 14.9ms | Allocations: 22608)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-23 02:21:35 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-23 02:21:35 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::PostsController#index as HTML
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 125ms (Views: 0.3ms | ActiveRecord: 11.6ms | Allocations: 22113)
+
+
+Completed 200 OK in 191ms (Views: 0.2ms | ActiveRecord: 15.7ms | Allocations: 22836)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-23 02:51:59 +0000
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 2017)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-23 02:59:19 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-23 02:59:19 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (5.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::Auth::SessionsController#index as HTML
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+  [1m[36mPost Load (2.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 90ms (Views: 0.3ms | ActiveRecord: 9.1ms | Allocations: 21399)
+
+
+Completed 200 OK in 145ms (Views: 0.2ms | ActiveRecord: 16.9ms | Allocations: 22575)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-23 04:42:12 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-23 04:42:12 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::PostsController#index as HTML
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mPost Load (9.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 210ms (Views: 0.3ms | ActiveRecord: 13.2ms | Allocations: 22090)
+
+
+Completed 200 OK in 219ms (Views: 0.3ms | ActiveRecord: 17.0ms | Allocations: 22736)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-23 04:45:46 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-23 04:45:46 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (7.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::PostsController#index as HTML
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mPost Load (3.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 98ms (Views: 0.3ms | ActiveRecord: 8.1ms | Allocations: 22067)
+
+
+Completed 200 OK in 173ms (Views: 0.6ms | ActiveRecord: 13.5ms | Allocations: 22795)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-25 02:59:55 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-25 02:59:55 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::Auth::SessionsController#index as HTML
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (9.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+  [1m[36mPost Load (1.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 197ms (Views: 0.2ms | ActiveRecord: 25.8ms | Allocations: 21311)
+
+
+Completed 200 OK in 189ms (Views: 0.2ms | ActiveRecord: 15.0ms | Allocations: 21710)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-25 03:31:10 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-25 03:31:10 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::Auth::SessionsController#index as HTML
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 82ms (Views: 0.3ms | ActiveRecord: 5.7ms | Allocations: 21479)
+
+
+Completed 200 OK in 149ms (Views: 0.2ms | ActiveRecord: 12.9ms | Allocations: 22656)
+
+

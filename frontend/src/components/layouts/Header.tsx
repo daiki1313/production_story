@@ -30,7 +30,15 @@ const StyleIconBtn = styled(IconButton)(({ theme }) => ({
   marginRight: theme.spacing(2)
 }));
 
-const StyleTypography = styled(Typography)
+const TitleTypography = styled(Typography)
+<{ component?: React.ElementType, to?: string}>
+(({ theme }) => ({
+  flexGrow: 1,
+  textDecoration: "none",
+  color: "inherit"
+}));
+
+const HeaderTypography = styled(Typography)
 <{ component?: React.ElementType, to?: string}>
 (({ theme }) => ({
   flexGrow: 1,
@@ -39,7 +47,7 @@ const StyleTypography = styled(Typography)
 }));
 
 const Header: React.FC = () => {
-  const { loading, isSignedIn, setIsSignedIn} = useContext(AuthContext)
+  const { loading, isSignedIn, setIsSignedIn, currentUser} = useContext(AuthContext)
   const [open, setOpen] = useState<boolean>(false);
   const anchorEl = useRef<HTMLButtonElement | null>(null);
   const navigation  = useNavigate()
@@ -58,17 +66,34 @@ const Header: React.FC = () => {
     <>
       <AppBar position="static">
         <Toolbar>
-          <StyleTypography
+          <TitleTypography
             component={Link}
             to="/"
             variant="h6"
           >
             制作裏話
-          </StyleTypography>
+          </TitleTypography>
 
           {
             isSignedIn && !loading ? (
               <>
+                <HeaderTypography
+                  component={Link}
+                  to="/posts/create"
+                  variant="h6"
+                >
+                  Upload
+                </HeaderTypography>
+
+                <HeaderTypography
+                  component={Link}
+                  to={`/posts/${currentUser?.id}`}
+                  variant="h6"
+                >
+                  MyWorks
+                </HeaderTypography>
+
+                {/* メニュー */}
                 <LinkBtn
                 color="inherit"
                 onClick={handleMenuOpen}
