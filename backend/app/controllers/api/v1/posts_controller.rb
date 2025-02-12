@@ -1,4 +1,4 @@
-# 投稿コントローラー
+# 記事コントローラー
 module Api
   module V1
     class PostsController < ApplicationController

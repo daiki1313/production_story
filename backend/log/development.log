@@ -6557,3 +6557,176 @@ Completed 200 OK in 82ms (Views: 0.3ms | ActiveRecord: 5.7ms | Allocations: 2147
 Completed 200 OK in 149ms (Views: 0.2ms | ActiveRecord: 12.9ms | Allocations: 22656)
 
 
+Started GET "/api/v1/posts" for 172.19.0.1 at 2024-10-25 03:35:17 +0000
+Started GET "/api/v1/auth/sessions" for 172.19.0.1 at 2024-10-25 03:35:17 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::PostsController#index as HTML
+Processing by Api::V1::Auth::SessionsController#index as HTML
+  [1m[36mPost Load (5.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'daityan13@gmail.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/auth/sessions_controller.rb:7:in `index'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 94ms (Views: 0.3ms | ActiveRecord: 8.6ms | Allocations: 22068)
+
+
+Completed 200 OK in 153ms (Views: 0.2ms | ActiveRecord: 12.4ms | Allocations: 22791)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2025-01-25 07:45:29 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (5.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mPost Load (1.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 213ms (Views: 0.3ms | ActiveRecord: 11.5ms | Allocations: 20017)
+
+
+Started POST "/api/v1/auth/sign_in" for 172.19.0.1 at 2025-01-25 07:46:18 +0000
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: DeviseTokenAuth::SessionsController, action: create, request: #<ActionDispatch::Request:0x00007fc860e626e0>, params: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "controller"=>"devise_token_auth/sessions", "action"=>"create", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: DeviseTokenAuth::SessionsController, action: create, request: #<ActionDispatch::Request:0x00007fc860e626e0>, params: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "controller"=>"devise_token_auth/sessions", "action"=>"create", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (BINARY `email` = 'daityan13@gmail.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+[31mUnpermitted parameter: :session. Context: { controller: DeviseTokenAuth::SessionsController, action: create, request: #<ActionDispatch::Request:0x00007fc860e626e0>, params: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "controller"=>"devise_token_auth/sessions", "action"=>"create", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: DeviseTokenAuth::SessionsController, action: create, request: #<ActionDispatch::Request:0x00007fc860e626e0>, params: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "controller"=>"devise_token_auth/sessions", "action"=>"create", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[37mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1 FOR UPDATE[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"N5cqAXvc360-kUn14j6toA\":{\"token\":\"$2a$10$xo0rE1siHvstr1DfKngnK.yTJss4m.5irpnSb9gPsNXGvVMrJ9UeK\",\"expiry\":1739000778}}', `users`.`updated_at` = '2025-01-25 07:46:18.532980' WHERE `users`.`id` = 2[0m
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[37mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1 FOR UPDATE[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"N5cqAXvc360-kUn14j6toA\":{\"token\":\"$2a$10$uyh0S18DhxOSz1sAL49PPeNDN/iAZQKQFUreXMj4DOuVFwe.r9x36\",\"expiry\":1739000778,\"previous_token\":\"$2a$10$xo0rE1siHvstr1DfKngnK.yTJss4m.5irpnSb9gPsNXGvVMrJ9UeK\",\"updated_at\":\"2025-01-25T07:46:18Z\"}}', `users`.`updated_at` = '2025-01-25 07:46:18.597603' WHERE `users`.`id` = 2[0m
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 330ms (Views: 0.1ms | ActiveRecord: 17.1ms | Allocations: 14869)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2025-01-25 07:46:18 +0000
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1897)
+
+
+Started GET "/api/v1/posts/2" for 172.19.0.1 at 2025-01-25 07:46:23 +0000
+Processing by Api::V1::PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 2 ORDER BY `posts`.`created_at` DESC LIMIT 1[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:23:in `show'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 863)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=2):
+  
+app/controllers/api/v1/posts_controller.rb:23:in `show'
+Started GET "/api/v1/posts" for 172.19.0.1 at 2025-01-25 07:46:30 +0000
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 1900)
+
+
+Started GET "/api/v1/posts/2" for 172.19.0.1 at 2025-01-25 07:46:35 +0000
+Processing by Api::V1::PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 2 ORDER BY `posts`.`created_at` DESC LIMIT 1[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:23:in `show'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 799)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=2):
+  
+app/controllers/api/v1/posts_controller.rb:23:in `show'
+Started GET "/api/v1/posts" for 172.19.0.1 at 2025-01-25 07:46:38 +0000
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 1889)
+
+
+Started GET "/" for 172.19.0.1 at 2025-02-04 12:43:49 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.8.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.8.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 9.8ms | Allocations: 477)
+Completed 200 OK in 417ms (Views: 41.2ms | ActiveRecord: 0.0ms | Allocations: 5907)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2025-02-05 12:11:03 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::PostsController#index as HTML
+Started GET "/" for 172.19.0.1 at 2025-02-05 12:11:04 +0000
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 400ms (Views: 0.4ms | ActiveRecord: 14.5ms | Allocations: 24914)
+
+
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.8.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.8.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 21.3ms | Allocations: 608)
+Completed 200 OK in 794ms (Views: 87.1ms | ActiveRecord: 0.0ms | Allocations: 14091)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2025-02-05 12:11:09 +0000
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 1909)
+
+
+Started POST "/api/v1/auth/sign_in" for 172.19.0.1 at 2025-02-05 12:13:15 +0000
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :session. Context: { controller: DeviseTokenAuth::SessionsController, action: create, request: #<ActionDispatch::Request:0x00007f79a8585650>, params: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "controller"=>"devise_token_auth/sessions", "action"=>"create", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: DeviseTokenAuth::SessionsController, action: create, request: #<ActionDispatch::Request:0x00007f79a8585650>, params: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "controller"=>"devise_token_auth/sessions", "action"=>"create", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (BINARY `email` = 'daityan13@gmail.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+[31mUnpermitted parameter: :session. Context: { controller: DeviseTokenAuth::SessionsController, action: create, request: #<ActionDispatch::Request:0x00007f79a8585650>, params: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "controller"=>"devise_token_auth/sessions", "action"=>"create", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}} }[0m
+[31mUnpermitted parameter: :session. Context: { controller: DeviseTokenAuth::SessionsController, action: create, request: #<ActionDispatch::Request:0x00007f79a8585650>, params: {"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]", "controller"=>"devise_token_auth/sessions", "action"=>"create", "session"=>{"email"=>"daityan13@gmail.com", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[37mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1 FOR UPDATE[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"N5cqAXvc360-kUn14j6toA\":{\"token\":\"$2a$10$uyh0S18DhxOSz1sAL49PPeNDN/iAZQKQFUreXMj4DOuVFwe.r9x36\",\"expiry\":1739000778,\"previous_token\":\"$2a$10$xo0rE1siHvstr1DfKngnK.yTJss4m.5irpnSb9gPsNXGvVMrJ9UeK\",\"updated_at\":\"2025-01-25T07:46:18Z\"},\"RmFODIp76LgW7HDpctkgzQ\":{\"token\":\"$2a$10$uuTr6mM8SVOITWrEyyLUcuSgwBNSvgdDoiGRPjdRfir.c6f.1KYTC\",\"expiry\":1739967195}}', `users`.`updated_at` = '2025-02-05 12:13:15.645507' WHERE `users`.`id` = 2[0m
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[37mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1 FOR UPDATE[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"N5cqAXvc360-kUn14j6toA\":{\"token\":\"$2a$10$uyh0S18DhxOSz1sAL49PPeNDN/iAZQKQFUreXMj4DOuVFwe.r9x36\",\"expiry\":1739000778,\"previous_token\":\"$2a$10$xo0rE1siHvstr1DfKngnK.yTJss4m.5irpnSb9gPsNXGvVMrJ9UeK\",\"updated_at\":\"2025-01-25T07:46:18Z\"},\"RmFODIp76LgW7HDpctkgzQ\":{\"token\":\"$2a$10$Ave7g7dpZZXxOHcXWN81re1hWD61rxEfsfcMWbE4hBftIhk.djqMm\",\"expiry\":1739967195,\"previous_token\":\"$2a$10$uuTr6mM8SVOITWrEyyLUcuSgwBNSvgdDoiGRPjdRfir.c6f.1KYTC\",\"updated_at\":\"2025-02-05T12:13:15Z\"}}', `users`.`updated_at` = '2025-02-05 12:13:15.716010' WHERE `users`.`id` = 2[0m
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 361ms (Views: 0.2ms | ActiveRecord: 13.9ms | Allocations: 15222)
+
+
+Started GET "/api/v1/posts" for 172.19.0.1 at 2025-02-05 12:13:15 +0000
+Processing by Api::V1::PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` IN (2, 1)[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `map'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1892)
+
+
+Started GET "/api/v1/posts/2" for 172.19.0.1 at 2025-02-05 12:13:18 +0000
+Processing by Api::V1::PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 2 ORDER BY `posts`.`created_at` DESC LIMIT 1[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:23:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 863)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=2):
+  
+app/controllers/api/v1/posts_controller.rb:23:in `show'

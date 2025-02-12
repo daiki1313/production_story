@@ -1,4 +1,4 @@
-FROM ruby:latest
+FROM ruby:3.3.5
 
 RUN mkdir /api
 
@@ -7,6 +7,8 @@ WORKDIR /api
 COPY Gemfile /api/Gemfile
 
 COPY Gemfile.lock /api/Gemfile.lock
+
+USER root
 
 RUN gem update && bundle install
 

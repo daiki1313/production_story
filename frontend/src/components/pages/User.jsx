@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { AuthContext } from "App"
 
 //ユーザー情報＆投稿記事一覧
-const User: React.FC = () => {
+const User = () => {
   const { isSignedIn, currentUser } = useContext(AuthContext)
 
   return (

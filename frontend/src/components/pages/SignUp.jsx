@@ -1,18 +1,17 @@
-import React, { useState, useContext } from "react"
-import { useNavigate } from "react-router-dom"
-import Cookies from "js-cookie"
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
-import { styled, Theme } from "@mui/material/styles"
-import TextField from "@mui/material/TextField"
-import Card from "@mui/material/Card"
-import CardContent from "@mui/material/CardContent"
-import CardHeader from "@mui/material/CardHeader"
-import Button from "@mui/material/Button"
+import { styled } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Button from "@mui/material/Button";
 
-import { AuthContext } from "App"
-import AlertMessage from "components/utils/AlertMessage"
-import { signUp } from "lib/api/auth"
-import { SignUpParams } from "interfaces/index"
+import { AuthContext } from "App";
+import AlertMessage from "components/utils/AlertMessage";
+import { signUp } from "lib/api/auth";
 
 //スタイル
 const StyleCard = styled(Card)(({ theme }) => ({
@@ -31,52 +30,52 @@ const SubmitBtn = styled(Button)(({ theme }) => ({
 }));
 
 // サインアップ用ページ
-const SignUp: React.FC = () => {
-  const navigation = useNavigate()
+const SignUp = () => {
+  const navigation = useNavigate();
 
-  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext)
+  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
 
-  const [name, setName] = useState<string>("")
-  const [email, setEmail] = useState<string>("")
-  const [password, setPassword] = useState<string>("")
-  const [passwordConfirmation, setPasswordConfirmation] = useState<string>("")
-  const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [alertMessageOpen, setAlertMessageOpen] = useState(false);
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const params: SignUpParams = {
+    const params = {
       name: name,
       email: email,
       password: password,
       passwordConfirmation: passwordConfirmation
-    }
+    };
 
     try {
-      const res = await signUp(params)
-      console.log(res)
+      const res = await signUp(params);
+      console.log(res);
 
       if (res.status === 200) {
         // アカウント作成と同時にログインさせてしまう
         // 本来であればメール確認などを挟むべきだが、今回はサンプルなので
-        Cookies.set("_access_token", res.headers["access-token"])
-        Cookies.set("_client", res.headers["client"])
-        Cookies.set("_uid", res.headers["uid"])
+        Cookies.set("_access_token", res.headers["access-token"]);
+        Cookies.set("_client", res.headers["client"]);
+        Cookies.set("_uid", res.headers["uid"]);
 
-        setIsSignedIn(true)
-        setCurrentUser(res.data.data)
+        setIsSignedIn(true);
+        setCurrentUser(res.data.data);
 
-        navigation("/")
+        navigation("/");
 
-        console.log("Signed in successfully!")
+        console.log("Signed in successfully!");
       } else {
-        setAlertMessageOpen(true)
+        setAlertMessageOpen(true);
       }
     } catch (err) {
-      console.log(err)
-      setAlertMessageOpen(true)
+      console.log(err);
+      setAlertMessageOpen(true);
     }
-  }
+  };
 
   return (
     <>
@@ -129,7 +128,7 @@ const SignUp: React.FC = () => {
               variant="contained"
               size="large"
               fullWidth
-              disabled={!name || !email || !password || !passwordConfirmation ? true : false}
+              disabled={!name || !email || !password || !passwordConfirmation}
               onClick={handleSubmit}
             >
               Submit
@@ -137,14 +136,14 @@ const SignUp: React.FC = () => {
           </CardContent>
         </StyleCard>
       </form>
-      <AlertMessage // エラーが発生した場合はアラートを表示
+      <AlertMessage
         open={alertMessageOpen}
         setOpen={setAlertMessageOpen}
         severity="error"
-        message="Invalid emai or password"
+        message="Invalid email or password"
       />
     </>
-  )
-}
+  );
+};
 
-export default SignUp
+export default SignUp;

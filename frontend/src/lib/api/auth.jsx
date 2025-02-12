@@ -1,14 +1,13 @@
 import client from "lib/api/client";
 import Cookies from "js-cookie";
-import { SignUpParams, SignInParams } from "interfaces/index";
 
 // サインアップ（新規アカウント作成）
-export const signUp = (params: SignUpParams) => {
+export const signUp = (params) => {
     return client.post("auth", params)
 }
 
 // サインイン（ログイン）
-export const signIn = (params: SignInParams)  => {
+export const signIn = (params)  => {
     return client.post("auth/sign_in", params)
 }
   

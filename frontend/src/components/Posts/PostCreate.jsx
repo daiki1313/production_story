@@ -1,26 +1,24 @@
-import { useContext } from "react"
-import { useState } from 'react';
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { postPost } from 'lib/api/post';
 import { AuthContext } from 'App';
-import { PostCreateParams, Radio } from "interfaces";
 
-export const PostCreate: React.FC = () => {
-  const { currentUser } = useContext(AuthContext)
+export const PostCreate = () => {
+  const { currentUser } = useContext(AuthContext);
 
-  const [title, setTitle] = useState<string>('');
-  const [useTool, setUseTool] = useState<string>('');
-  const [content, setContent] = useState<string>('');
-  const [category, setCategory] = useState<string>('cover');
+  const [title, setTitle] = useState('');
+  const [useTool, setUseTool] = useState('');
+  const [content, setContent] = useState('');
+  const [category, setCategory] = useState('cover');
 
   const navigateToPosts = useNavigate();
 
-  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value);
-  const handleUseToolChange = (e: React.ChangeEvent<HTMLInputElement>) => setUseTool(e.target.value);
-  const handleContentChange = (e: React.ChangeEvent<HTMLInputElement>) => setContent(e.target.value);
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => setCategory(e.target.value);
+  const handleTitleChange = (e) => setTitle(e.target.value);
+  const handleUseToolChange = (e) => setUseTool(e.target.value);
+  const handleContentChange = (e) => setContent(e.target.value);
+  const handleCategoryChange = (e) => setCategory(e.target.value);
 
-  const radioButtons: Radio[] = [
+  const radioButtons = [
     {
       label: "歌ってみた",
       value: "cover"
@@ -29,10 +27,9 @@ export const PostCreate: React.FC = () => {
       label: "オリジナル",
       value: "original"
     },
-  ]
+  ];
 
-  //api呼び出し
-  const postPostFunc = async (post: PostCreateParams) => {
+  const postPostFunc = async (post) => {
     try {
       await postPost(post);
       navigateToPosts("/");
@@ -41,16 +38,15 @@ export const PostCreate: React.FC = () => {
     }
   };
 
-  //投稿ボタン押下際の関数
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!currentUser) {
       console.error("User not signed in");
-      return; // ユーザーがサインインしていない場合は処理を中止
+      return;
     }
 
-    const newPost: PostCreateParams = {
+    const newPost = {
       userId: currentUser.id,
       title: title,
       useTool: useTool,
@@ -95,15 +91,14 @@ export const PostCreate: React.FC = () => {
         <div>
           {radioButtons.map(radio => {
               return (
-                <div className="col-4">
-                    {/* checked属性に式を定義する */}
+                <div className="col-4" key={radio.value}>
                     <input className="form-check-input" type="radio"
-                        value={radio.value} checked={radio.value === category} onChange={handleCategoryChange}/>
+                        value={radio.value} checked={radio.value === category} onChange={handleCategoryChange} />
                     <label className="form-check-label">
                         <span className="fs-6">{radio.label}</span>
                     </label>
                 </div>
-              )
+              );
           })}
         </div>
 

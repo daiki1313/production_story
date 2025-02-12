@@ -1,20 +1,19 @@
-import React, { useState, useContext } from "react"
-import { useNavigate, Link } from "react-router-dom"
-import Cookies from "js-cookie"
+import React, { useState, useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
-import { styled, Theme } from "@mui/material/styles"
+import { styled } from "@mui/material/styles";
 import Typography from '@mui/material/Typography';
-import TextField from "@mui/material/TextField"
-import Card from "@mui/material/Card"
-import CardContent from "@mui/material/CardContent"
-import CardHeader from "@mui/material/CardHeader"
-import Button from "@mui/material/Button"
+import TextField from "@mui/material/TextField";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Button from "@mui/material/Button";
 import Box from '@mui/material/Box';
 
-import { AuthContext } from "App"
-import AlertMessage from "components/utils/AlertMessage"
-import { signIn } from "lib/api/auth"
-import { SignInParams } from "interfaces/index"
+import { AuthContext } from "App";
+import AlertMessage from "components/utils/AlertMessage";
+import { signIn } from "lib/api/auth";
 
 //スタイル
 const StyleCard = styled(Card)(({ theme }) => ({
@@ -41,47 +40,47 @@ const StyleLink = styled(Link)(({ theme }) => ({
 }));
 
 // サインイン用ページ
-const SignIn: React.FC = () => {
-  const navigation  = useNavigate()
+const SignIn = () => {
+  const navigation = useNavigate();
 
-  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext)
+  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
 
-  const [email, setEmail] = useState<string>("")
-  const [password, setPassword] = useState<string>("")
-  const [alertMessageOpen, setAlertMessageOpen] = useState<boolean>(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [alertMessageOpen, setAlertMessageOpen] = useState(false);
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const params: SignInParams = {
+    const params = {
       email: email,
       password: password
-    }
+    };
 
     try {
-      const res = await signIn(params)
-      console.log(res)
+      const res = await signIn(params);
+      console.log(res);
 
       if (res.status === 200) {
         // ログインに成功した場合はCookieに各値を格納
-        Cookies.set("_access_token", res.headers["access-token"])
-        Cookies.set("_client", res.headers["client"])
-        Cookies.set("_uid", res.headers["uid"])
+        Cookies.set("_access_token", res.headers["access-token"]);
+        Cookies.set("_client", res.headers["client"]);
+        Cookies.set("_uid", res.headers["uid"]);
 
-        setIsSignedIn(true)
-        setCurrentUser(res.data.data)
+        setIsSignedIn(true);
+        setCurrentUser(res.data.data);
 
-        navigation("/")
+        navigation("/");
 
-        console.log("Signed in successfully!")
+        console.log("Signed in successfully!");
       } else {
-        setAlertMessageOpen(true)
+        setAlertMessageOpen(true);
       }
     } catch (err) {
-      console.log(err)
-      setAlertMessageOpen(true)
+      console.log(err);
+      setAlertMessageOpen(true);
     }
-  }
+  };
 
   return (
     <>
@@ -115,7 +114,7 @@ const SignIn: React.FC = () => {
               variant="contained"
               size="large"
               fullWidth
-              disabled={!email || !password ? true : false} // 空欄があった場合はボタンを押せないように
+              disabled={!email || !password}
               onClick={handleSubmit}
             >
               Submit
@@ -131,14 +130,14 @@ const SignIn: React.FC = () => {
           </CardContent>
         </StyleCard>
       </form>
-      <AlertMessage // エラーが発生した場合はアラートを表示
+      <AlertMessage
         open={alertMessageOpen}
         setOpen={setAlertMessageOpen}
         severity="error"
-        message="Invalid emai or password"
+        message="Invalid email or password"
       />
     </>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;
