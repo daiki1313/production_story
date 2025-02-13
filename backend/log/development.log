@@ -6730,3 +6730,11 @@ Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 863)
 ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=2):
   
 app/controllers/api/v1/posts_controller.rb:23:in `show'
+Started GET "/" for 172.19.0.1 at 2025-02-12 23:49:07 +0000
+  [1m[36mActiveRecord::SchemaMigration Pluck (5.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.8.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.8.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 9.9ms | Allocations: 477)
+Completed 200 OK in 418ms (Views: 40.4ms | ActiveRecord: 0.0ms | Allocations: 5907)
+
+

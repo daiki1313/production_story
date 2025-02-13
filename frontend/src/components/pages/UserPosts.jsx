@@ -17,7 +17,8 @@ const UserPosts = () => {
     setLoading(true);
 
     try {
-      const response = await getUserPosts(id);
+      const userId = id;
+      const response = await getUserPosts(userId);
       const postData = response.data;
       setPosts(postData);
     } catch (error) {

@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Avatar, Box, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import sampleImg from "../../images/sampleImg1.jpg";
+import { useNavigate } from "react-router-dom";
 
 const StyleTypography = styled(Typography)`
   position: absolute;
@@ -14,7 +15,7 @@ const StyleTypography = styled(Typography)`
 `;
 
 export const PostWrapper = ({ post, onClickPostWrapper }) => (
-
+  
   <Card sx={{ maxWidth: 345 }} onClick={() => onClickPostWrapper(post)}>
 
     <Box sx={{ position: "relative" }}>
@@ -41,7 +42,7 @@ export const PostWrapper = ({ post, onClickPostWrapper }) => (
         <Avatar sx={{ bgcolor: "#000000" }} aria-label="recipe">
           R
         </Avatar>
-        <Typography sx={{ marginLeft: 2 }} variant="body1" onClick={() => navigate(`/users/${id}`)}>
+        <Typography sx={{ marginLeft: 2 }} variant="body1" onClick={() => navigate(`/users/${post.userId}`)}>
           {post.userName}
         </Typography>
       </Box>

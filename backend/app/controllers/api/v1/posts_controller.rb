@@ -15,6 +15,7 @@ module Api
             useTool: post.use_tool,
             category: post.category,
             userName: post.user.name,
+            userId: post.user_id,
           }
         }
       end

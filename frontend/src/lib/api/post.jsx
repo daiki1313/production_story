@@ -30,7 +30,7 @@ export const getPosts = async () => {
 }
 
 //ユーザー記事一覧
-export const getUserPosts = async () => {
-  return client.get(`/posts/${id}`)
+export const getUserPosts = async (userId) => {
+  return client.get(`/users/${userId}`)
 }
 

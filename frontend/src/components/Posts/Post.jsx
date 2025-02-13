@@ -52,7 +52,7 @@ export const Post = () => {
           <p>use_tool: {post.useTool}</p>
           <p>Content: {post.content}</p>
           <p>Category: {post.category}</p>
-          <p>UserName: {post.userName}</p>
+          <p onClick={() => navigate(`/posts/${post.userId}`)}>UserName: {post.userName}</p>
           {/* 投稿編集ボタン */}
           <button
             onClick={() => navigate(`/posts/${id}/edit`)}
