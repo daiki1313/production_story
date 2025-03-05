@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "App";
 import { Posts } from "components/Posts/Posts";
+import { getPosts } from "lib/api/post";
 
 const Home = () => {
   const { isSignedIn, currentUser } = useContext(AuthContext);

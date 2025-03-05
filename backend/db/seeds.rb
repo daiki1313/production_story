@@ -1,3 +1,4 @@
+
 #記事
 User.all.each do |user|
   Post.create!(

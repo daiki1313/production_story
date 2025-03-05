@@ -1,16 +1,17 @@
 import React, { useState, useEffect, createContext } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 
 import CommonLayout from "components/layouts/CommonLayout";
 import Home from "components/pages/Home";
+import { UserPosts } from "components/pages/UserPosts";
 import SignUp from "components/pages/SignUp";
 import SignIn from "components/pages/SignIn";
 
 import { getCurrentUser } from "lib/api/auth";
 import { PostCreate } from "components/Posts/PostCreate";
-import { Posts } from "components/Posts/Posts";
 import { Post } from "components/Posts/Post";
 import { PostEdit } from "components/Posts/PostEdit";
+
 
 // グローバルで扱う変数・関数
 export const AuthContext = createContext({

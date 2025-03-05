@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getPosts } from "lib/api/post";
+
 import { AuthContext } from "App";
 import styled from "@emotion/styled";
 import { PostWrapper } from "./PostWrapper";

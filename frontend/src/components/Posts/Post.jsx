@@ -22,22 +22,22 @@ export const Post = () => {
     }
   };
 
-  const fetchPostData = async () => {
-    setLoading(true);
-    try {
-      const response = await getPost(id);
-      const postData = response.data;
-      setPost(postData);
-    } catch (error) {
-        setError(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchPostData = async () => {
+      setLoading(true);
+      try {
+        const response = await getPost(id);
+        const postData = response.data;
+        setPost(postData);
+      } catch (error) {
+          setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchPostData();
-  }, [id]);
+  }, [id,setLoading]);
 
   return (
     <div>
