@@ -19,16 +19,15 @@ class User < ApplicationRecord
 
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_one_attached :avatar
 
+  def avatar_url
+    Rails.application.routes.url_helpers.rails_blob_path(avatar, only_path: true) if avatar.attached?
+  end
 
   # ユーザーをフォローする
   def follow(other_user)
     following << other_user unless self == other_user
-  end
-
-  # ユーザーをフォロー解除する
-  def unfollow(other_user)
-    following.delete(other_user)
   end
 
   # 現在のユーザーが他のユーザーをフォローしていればtrueを返す

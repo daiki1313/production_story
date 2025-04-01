@@ -4,27 +4,27 @@ import { Posts } from "components/Posts/Posts";
 import { getPosts } from "lib/api/post";
 
 const Home = () => {
-  const { isSignedIn, currentUser } = useContext(AuthContext);
   const { loading, setLoading } = useContext(AuthContext);
   const [error, setError] = useState(null);
 
   const [posts, setPosts] = useState([]);
 
-  const fetchPostData = async () => {
-    setLoading(true);
-    try {
-      const response = await getPosts();
-      const postData = response.data;
-      setPosts(postData);
-    } catch (error) {
-      setError(error instanceof Error ? error : new Error("Unknown error occurred"));
-    }
-    setLoading(false);
-  };
-
   useEffect(() => {
+    const fetchPostData = async () => {
+      setLoading(true);
+      try {
+        const response = await getPosts();
+        const postData = response.data;
+        console.log(response);
+        setPosts(postData);
+      } catch (error) {
+        setError(error instanceof Error ? error : new Error("Unknown error occurred"));
+      }
+      setLoading(false);
+    };
+
     fetchPostData();
-  }, []);
+  }, [setLoading]);
 
   return (
     <div>

@@ -16,6 +16,8 @@ module Api
             category: post.category,
             userName: post.user.name,
             userId: post.user_id,
+            userAvatar: post.user.avatar_url,
+            imageUrl: post.image.attached? ? url_for(post.image) : nil,
           }
         }
       end
@@ -30,13 +32,16 @@ module Api
           useTool: post.use_tool,
           category: post.category,
           userName: post.user.name,
-          userId: post.user_id
+          userId: post.user_id,
+          userAvatar: post.user.avatar_url,
+          imageUrl: post.image.attached? ? url_for(post.image) : nil,
         }
       end
 
       def create
         post = current_api_v1_user.posts.new(post_params)
         if post.save
+          post.image.attach(params[:post][:image]) if params[:post][:image]
           render json: post, status: :created
         else
           render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
@@ -47,6 +52,7 @@ module Api
         authorize_user! # ユーザーの権限を確認
 
         if @post.update(update_params)
+          @post.image.attach(params[:post][:image]) if params[:post][:image]
           render json: @post
         else
           render json: { errors: @post.errors.full_messages }, status: :unprocessable_entity

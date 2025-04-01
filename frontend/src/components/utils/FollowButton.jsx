@@ -3,7 +3,7 @@ import { useState, useEffect,useContext } from "react";
 import { AuthContext } from "App";
 
 
-export const FollowButton = ({ userId }) => {
+export const FollowButton = ({ userId, onFollowChange }) => {
   const [isFollowing, setIsFollowing] = useState(false);
   const { loading, setLoading, currentUser } = useContext(AuthContext);
 
@@ -27,9 +27,11 @@ export const FollowButton = ({ userId }) => {
       if (isFollowing) {
         // フォロー解除のリクエスト
         await userUnFollow(userId);
+        onFollowChange(-1); // フォロワー数を1減らす
       } else {
         // フォローのリクエスト
         await userFollow(userId);
+        onFollowChange(1); // フォロワー数を1増やす
       }
       setIsFollowing(!isFollowing); // フォロー状態を切り替え
     } catch (error) {

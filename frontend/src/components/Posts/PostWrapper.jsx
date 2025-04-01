@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-import { Avatar, Box, Card, CardActions, CardContent, CardMedia, IconButton, Typography } from "@mui/material";
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Avatar, Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import sampleImg from "../../images/sampleImg1.jpg";
 import { useNavigate } from "react-router-dom";
 
@@ -18,6 +17,8 @@ export const PostWrapper = ({ post, onClickPostWrapper }) => {
 
   const navigate = useNavigate();
 
+  const imageUrl = post.imageUrl ? post.imageUrl : sampleImg;
+
   return (
     
     <Card sx={{ maxWidth: 345 }} onClick={() => onClickPostWrapper(post)}>
@@ -26,7 +27,7 @@ export const PostWrapper = ({ post, onClickPostWrapper }) => {
         <CardMedia
           component="img"
           height="194"
-          image={sampleImg}
+          image={imageUrl}
           onClick={() => navigate(`/posts/${post.id}`)} />
         <StyleTypography variant="h6">{post.category}</StyleTypography>
       </Box>
@@ -35,18 +36,23 @@ export const PostWrapper = ({ post, onClickPostWrapper }) => {
         <Typography onClick={() => navigate(`/posts/${post.id}`)} >{post.title}</Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>{post.content}</Typography>
       </CardContent>
-
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-      </CardActions>
       
       <CardContent>
         <Box display="flex" alignItems="center">
-          <Avatar sx={{ bgcolor: "#000000" }} aria-label="recipe" onClick={() => navigate(`/users/${post.userId}`)}>
+
+          {post.userAvatar ? (
+            <img src={`http://localhost:3001/${post.userAvatar}`} 
+              alt="User Avatar" 
+              onClick={() => navigate(`/users/${post.userId}`)}
+              style={{ width: '40px', height: '40px', borderRadius: '50%' }}
+            />
+          ) : (
+            // アイコン未設定⇒初期アイコン表示
+            <Avatar sx={{ bgcolor: "#000000" }} aria-label="recipe" onClick={() => navigate(`/users/${post.userId}`)}>
             R
-          </Avatar>
+            </Avatar>
+          )}
+
           <Typography sx={{ marginLeft: 2 }} variant="body1" onClick={() => navigate(`/users/${post.userId}`)}>
             {post.userName}
           </Typography>

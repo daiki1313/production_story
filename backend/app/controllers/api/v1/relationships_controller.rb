@@ -23,13 +23,15 @@ module Api
 
       # フォロー解除
       def destroy
-        other_user = Relationship.find(params[:id]).followed
+        relationship = Relationship.find_by(follower_id: current_api_v1_user.id, followed_id: params[:id])
         
-        # フォロー解除処理
-        if current_api_v1_user.unfollow(other_user)
+        if relationship
+          # 関係を削除
+          relationship.destroy
           render json: { message: "フォローを解除しました" }, status: :ok
         else
-          render json: { error: "フォロー解除できませんでした" }, status: :unprocessable_entity
+          # 関係が見つからない場合、エラーを返す
+          render json: { error: "フォロー解除できませんでした" }, status: :not_found
         end
       end
     

@@ -36,12 +36,11 @@ const HeaderMenu = ({ anchorEl, open, onClose }) => {
       <MenuItem disabled>
         <Typography>{currentUser?.name}</Typography>
       </MenuItem>
-      <MenuItem onClick={onClose} component={Link} to="/profile">
-        プロフィール
-      </MenuItem>
-      <MenuItem onClick={onClose} component={Link} to="/config">
+
+      <MenuItem onClick={onClose} component={Link} to="/config" disabled>
         設定
       </MenuItem>
+      
       <MenuItem onClick={(e) => { onClose(); handleSignOut(e); }}>
         LogOut
       </MenuItem>

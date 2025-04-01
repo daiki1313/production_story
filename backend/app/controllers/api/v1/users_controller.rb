@@ -3,6 +3,25 @@ module Api
     class UsersController < ApplicationController
       before_action :set_user, only: [:show,:followers,:following]
 
+
+      def update_avatar
+        @user = User.find(params[:id])
+
+        if params[:avatar].present?
+          @user.avatar.attach(params[:avatar]) # attachメソッドを使う
+      
+          if @user.save # 保存を行う
+            render json: { status: 'success', avatar_url: url_for(@user.avatar) }
+          else
+            render json: { status: 'error', message: @user.errors.full_messages }
+          end
+          
+        else
+          render json: { status: 'error', message: 'No avatar provided' }
+        end
+
+      end
+      
       def show
         posts = @user.posts.includes(:user)
 
@@ -11,6 +30,8 @@ module Api
         follower_count = @user.follower_count
         
             render json: {
+              user_name: @user.name,
+              userAvatar: @user.avatar_url,
               posts: posts.map { |post| 
                 {
                   id: post.id,
@@ -20,6 +41,8 @@ module Api
                   category: post.category,
                   userName: post.user.name,
                   userId: post.user_id,
+                  userAvatar: post.user.avatar_url,
+                  imageUrl: post.image.attached? ? url_for(post.image) : nil,
                 }
               },
               following_count: following_count,
@@ -36,7 +59,6 @@ module Api
           {
             id: followed.id,
             name: followed.name,
-            # avatar_url: followed.avatar.url # `avatar`がCarrierWaveなどで設定されている場合
           }
         }
       end
@@ -49,7 +71,6 @@ module Api
           {
             id: follower.id,
             name: follower.name,
-            # avatar_url: follower.avatar.url # `avatar`がCarrierWaveなどで設定されている場合
           }
         }
       end

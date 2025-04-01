@@ -9,7 +9,7 @@ export const getFollowers = async (userId) => {
 //フォロー
 export const userFollow = async (userId) => {
     const headers = getToken();
-    return client.post(`/relationships`, { following_id: userId }, { headers })
+    return client.post(`/relationships`, { followed_id: userId }, { headers })
 }
 
 //フォロー解除

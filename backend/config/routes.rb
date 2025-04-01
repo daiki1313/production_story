@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :users, only: %i[show] do
         member do
           get :following, :followers
+          patch :update_avatar
         end
       end
       resources :test, only: %i[index]

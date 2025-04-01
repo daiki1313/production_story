@@ -70,7 +70,7 @@ const Header = () => {
                 Upload
               </HeaderTypography>
 
-              <HeaderTypography component={Link} to={`/posts/${currentUser?.id}`} variant="h6">
+              <HeaderTypography component={Link} to={`/users/${currentUser?.id}`} variant="h6">
                 MyWorks
               </HeaderTypography>
 
