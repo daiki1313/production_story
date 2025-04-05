@@ -41,7 +41,7 @@ export const PostWrapper = ({ post, onClickPostWrapper }) => {
         <Box display="flex" alignItems="center">
 
           {post.userAvatar ? (
-            <img src={`http://localhost:3001/${post.userAvatar}`} 
+            <img src={post.userAvatar} 
               alt="User Avatar" 
               onClick={() => navigate(`/users/${post.userId}`)}
               style={{ width: '40px', height: '40px', borderRadius: '50%' }}

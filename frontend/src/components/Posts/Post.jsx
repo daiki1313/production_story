@@ -43,10 +43,6 @@ export const Post = () => {
 
   return (
     <Box sx={{ maxWidth: '1200px', margin: 'auto', padding: 3 }}>
-      <Typography variant="h4" align="center" gutterBottom>
-        投稿詳細
-      </Typography>
-
       {loading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
           <CircularProgress />

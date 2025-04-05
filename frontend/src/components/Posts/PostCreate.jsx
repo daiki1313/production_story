@@ -2,7 +2,8 @@ import { useContext, useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import { postPost } from 'lib/api/post';
 import { AuthContext } from 'App';
-import { TextField, Button, Box, InputLabel , Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Input } from '@mui/material';
+import { TextField, Button, Box, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel} from '@mui/material';
+import { ImageUpload } from 'components/utils/ImageUpload';
 
 export const PostCreate = () => {
   const { currentUser } = useContext(AuthContext);
@@ -12,14 +13,7 @@ export const PostCreate = () => {
   const [content, setContent] = useState('');
   const [category, setCategory] = useState('cover');
   const [image, setImage] = useState(null);
-
   const navigateToPosts = useNavigate();
-
-  const handleTitleChange = (e) => setTitle(e.target.value);
-  const handleUseToolChange = (e) => setUseTool(e.target.value);
-  const handleContentChange = (e) => setContent(e.target.value);
-  const handleCategoryChange = (e) => setCategory(e.target.value);
-  const handleImageChange = (e) => setImage(e.target.files[0]);
 
   const radioButtons = [
     { label: "歌ってみた", value: "cover" },
@@ -78,7 +72,7 @@ export const PostCreate = () => {
             fullWidth
             variant="outlined"
             value={title}
-            onChange={handleTitleChange}
+            onChange={(e) => setTitle(e.target.value)}
             required
             margin="normal"
           />
@@ -90,7 +84,7 @@ export const PostCreate = () => {
             fullWidth
             variant="outlined"
             value={useTool}
-            onChange={handleUseToolChange}
+            onChange={(e) => setUseTool(e.target.value)}
             required
             margin="normal"
           />
@@ -102,7 +96,7 @@ export const PostCreate = () => {
             fullWidth
             variant="outlined"
             value={content}
-            onChange={handleContentChange}
+            onChange={(e) => setContent(e.target.value)}
             required
             multiline
             rows={4}
@@ -116,7 +110,7 @@ export const PostCreate = () => {
             <RadioGroup
               row
               value={category}
-              onChange={handleCategoryChange}
+              onChange={ (e) => setCategory(e.target.value)}
             >
               {radioButtons.map((radio) => (
                 <FormControlLabel
@@ -131,17 +125,7 @@ export const PostCreate = () => {
         </Box>
 
         <Box mb={2}>
-          <FormControl fullWidth margin="normal">
-            <InputLabel htmlFor="image-upload">画像を選択</InputLabel>
-            <Input
-              id="image-upload"
-              type="file"
-              onChange={handleImageChange}
-              fullWidth
-              inputProps={{ accept: "image/*" }}
-              margin="normal"
-            />
-          </FormControl>
+            <ImageUpload setImage={setImage} image={image}/>
         </Box>
 
         <Box display="flex" justifyContent="center" mt={3}>

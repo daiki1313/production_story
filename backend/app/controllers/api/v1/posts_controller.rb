@@ -16,7 +16,7 @@ module Api
             category: post.category,
             userName: post.user.name,
             userId: post.user_id,
-            userAvatar: post.user.avatar_url,
+            userAvatar: post.user.avatar.attached? ? url_for(post.user.avatar) : nil,
             imageUrl: post.image.attached? ? url_for(post.image) : nil,
           }
         }
@@ -33,7 +33,7 @@ module Api
           category: post.category,
           userName: post.user.name,
           userId: post.user_id,
-          userAvatar: post.user.avatar_url,
+          userAvatar: post.user.avatar.attached? ? url_for(post.user.avatar) : nil,
           imageUrl: post.image.attached? ? url_for(post.image) : nil,
         }
       end

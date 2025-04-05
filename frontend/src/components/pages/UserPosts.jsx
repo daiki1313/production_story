@@ -41,7 +41,7 @@ export const UserPosts = () => {
 
       } catch (error) {
         setError(error instanceof Error ? error : new Error("Unknown error occurred"));
-        console.error('API呼び出し中にエラーが発生しました:', error);  // エラーログを追加
+        console.error('API呼び出し中にエラーが発生しました:', error);
       }finally{
         setLoading(false);
       }
@@ -64,13 +64,12 @@ export const UserPosts = () => {
 
         ) : posts.length > 0 ? (
           <>
-
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center',marginBottom: '16px' }}>
               {userAvatar ? (
                 <img 
-                  src={`http://localhost:3001/${userAvatar}`} 
+                  src={userAvatar}
                   alt="User Avatar" 
-                  style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '8px' }} // 画像の右にスペースを追加
+                  style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '8px' }}
                 />
               ) : (
                 <Avatar sx={{ bgcolor: "#000000" }} aria-label="recipe" style={{ marginRight: '8px' }}>
@@ -78,12 +77,12 @@ export const UserPosts = () => {
                 </Avatar>
               )}
 
-              <h2 style={{ margin: 0 }}>{userName}の投稿</h2> {/* マージンを0にして隙間をなくす */}
+              <h2 style={{ margin: 0 }}>{userName}の投稿</h2>
             </div>
 
             {/* アイコンアップロードフォーム */}
             {currentUser && currentUser.id === parseInt(userId) && (
-              <AvatarUpload userId={currentUser.id} />
+              <AvatarUpload userId={currentUser.id} setUserAvatar={setUserAvatar}/>
             )}
             
             {/* フォローボタン */}

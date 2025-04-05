@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { getPost, updatePost } from 'lib/api/post';
 import { AuthContext } from 'App';
-import { TextField, Button, Box, Typography, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Input, CircularProgress,InputLabel  } from '@mui/material';
+import { TextField, Button, Box, Typography, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, CircularProgress} from '@mui/material';
+import { ImageUpload } from 'components/utils/ImageUpload';
 
 export const PostEdit = () => {
   const { id } = useParams();
@@ -147,17 +148,7 @@ export const PostEdit = () => {
           </Box>
 
           <Box mb={2}>
-            <FormControl fullWidth margin="normal">
-              <InputLabel htmlFor="image-upload">画像を選択</InputLabel>
-              <Input
-                id="image-upload"
-                type="file"
-                onChange={handleImageChange}
-                fullWidth
-                inputProps={{ accept: "image/*" }}
-                margin="normal"
-              />
-            </FormControl>
+            <ImageUpload setImage={setImage} image={image}/>
           </Box>
 
           <Box display="flex" justifyContent="center" mt={3}>

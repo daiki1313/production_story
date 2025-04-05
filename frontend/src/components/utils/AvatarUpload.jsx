@@ -1,14 +1,25 @@
 import { useState,useContext } from "react";
 import { AuthContext } from "App";
 import { updateAvatar } from "lib/api/avatar";
+import { Button } from '@mui/material';
 
-export const AvatarUpload = ({ userId }) => {
+export const AvatarUpload = ({ userId, setUserAvatar }) => {
   const [avatar, setAvatar] = useState(null);
   const {setLoading} = useContext(AuthContext);
   const [error, setError] = useState(null);
 
   const handleFileChange = (e) => {
-    setAvatar(e.target.files[0]);
+    const file = e.target.files[0];
+    setAvatar(file);
+
+    if (file) {
+      const objectUrl = URL.createObjectURL(file);
+      setUserAvatar(objectUrl);
+    }
+  };
+
+  const handleButtonClick = () => {
+    document.getElementById('image-upload').click();
   };
 
   const handleSubmit = async (e) => {
@@ -17,8 +28,7 @@ export const AvatarUpload = ({ userId }) => {
     try{
         const avatarUrl = new FormData();
         avatarUrl.append("avatar", avatar);
-
-        await updateAvatar(userId,avatarUrl);
+        await updateAvatar(userId, avatarUrl);
 
     } catch (error) {
       setError(error instanceof Error ? error : new Error("Unknown error occurred"));
@@ -28,14 +38,25 @@ export const AvatarUpload = ({ userId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {error && <p style={{ color: "red" }}>{error.message}</p>}
+    <div>
       <input
+        id="image-upload"
         type="file"
-        accept="image/*"
+        style={{ display: 'none' }}
         onChange={handleFileChange}
+        accept="image/*"
       />
-      <button type="submit">アイコンを更新</button>
-    </form>
+      <Button variant="contained" onClick={handleButtonClick} style={{ marginRight: '6px'}}>
+        アイコンを選択
+      </Button>
+
+      {avatar && <p>選択中: {avatar.name}</p>}
+
+      {error && <p style={{ color: "red" }}>{error.message}</p>}
+
+      <Button variant="contained" onClick={handleSubmit}>
+        更新
+      </Button>
+    </div>
   );
 }

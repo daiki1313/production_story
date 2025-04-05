@@ -31,7 +31,7 @@ module Api
         
             render json: {
               user_name: @user.name,
-              userAvatar: @user.avatar_url,
+              userAvatar: @user.avatar.attached? ? url_for(@user.avatar) : nil,
               posts: posts.map { |post| 
                 {
                   id: post.id,
@@ -41,7 +41,7 @@ module Api
                   category: post.category,
                   userName: post.user.name,
                   userId: post.user_id,
-                  userAvatar: post.user.avatar_url,
+                  userAvatar: post.user.avatar.attached? ? url_for(post.user.avatar) : nil,
                   imageUrl: post.image.attached? ? url_for(post.image) : nil,
                 }
               },
