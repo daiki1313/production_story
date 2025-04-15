@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { getUserPosts } from "lib/api/post";
 import { FollowButton } from "components/utils/FollowButton";
 import { AvatarUpload } from "components/utils/AvatarUpload";
-import { Avatar} from "@mui/material";
+import userNoImg from "../../images/kkrn_icon_user_1.png";
 
 
 export const UserPosts = () => {
@@ -72,9 +72,10 @@ export const UserPosts = () => {
                   style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '8px' }}
                 />
               ) : (
-                <Avatar sx={{ bgcolor: "#000000" }} aria-label="recipe" style={{ marginRight: '8px' }}>
-                  R
-                </Avatar>
+                <img src={userNoImg} 
+                  alt="No Avatar" 
+                  style={{ width: '40px', height: '40px', borderRadius: '50%' }}
+                />
               )}
 
               <h2 style={{ margin: 0 }}>{userName}の投稿</h2>
