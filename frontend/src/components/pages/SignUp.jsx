@@ -56,8 +56,6 @@ const SignUp = () => {
       console.log(res);
 
       if (res.status === 200) {
-        // アカウント作成と同時にログインさせてしまう
-        // 本来であればメール確認などを挟むべきだが、今回はサンプルなので
         Cookies.set("_access_token", res.headers["access-token"]);
         Cookies.set("_client", res.headers["client"]);
         Cookies.set("_uid", res.headers["uid"]);

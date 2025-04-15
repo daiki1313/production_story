@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
-import { Avatar, Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
-import sampleImg from "../../images/sampleImg1.jpg";
+import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import sampleImg from "../../images/no_image_yoko.jpg";
+import userNoImg from "../../images/kkrn_icon_user_1.png";
 import { useNavigate } from "react-router-dom";
 
 const StyleTypography = styled(Typography)`
@@ -28,13 +29,33 @@ export const PostWrapper = ({ post, onClickPostWrapper }) => {
           component="img"
           height="194"
           image={imageUrl}
-          onClick={() => navigate(`/posts/${post.id}`)} />
+          onClick={() => navigate(`/posts/${post.id}`)} 
+          sx={{
+            width: '100%',
+            objectFit: 'cover'
+          }}
+        />
         <StyleTypography variant="h6">{post.category}</StyleTypography>
       </Box>
 
       <CardContent >
-        <Typography onClick={() => navigate(`/posts/${post.id}`)} >{post.title}</Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>{post.content}</Typography>
+        <Typography 
+          sx={{
+              overflow: 'hidden',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+          }}
+        onClick={() => navigate(`/posts/${post.id}`)} >{post.title}</Typography>
+
+        <Typography variant="body2"
+        sx={{
+          color: 'text.secondary',
+          display: '-webkit-box',
+          overflow: 'hidden',
+          WebkitBoxOrient: 'vertical',
+          WebkitLineClamp: 2,
+          whiteSpace: 'normal',
+           }}>{post.content}</Typography>
       </CardContent>
       
       <CardContent>
@@ -47,10 +68,11 @@ export const PostWrapper = ({ post, onClickPostWrapper }) => {
               style={{ width: '40px', height: '40px', borderRadius: '50%' }}
             />
           ) : (
-            // アイコン未設定⇒初期アイコン表示
-            <Avatar sx={{ bgcolor: "#000000" }} aria-label="recipe" onClick={() => navigate(`/users/${post.userId}`)}>
-            R
-            </Avatar>
+            <img src={userNoImg} 
+              alt="No Avatar" 
+              onClick={() => navigate(`/users/${post.userId}`)}
+              style={{ width: '40px', height: '40px', borderRadius: '50%' }}
+            />
           )}
 
           <Typography sx={{ marginLeft: 2 }} variant="body1" onClick={() => navigate(`/users/${post.userId}`)}>

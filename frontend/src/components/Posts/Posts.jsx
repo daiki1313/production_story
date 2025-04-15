@@ -1,7 +1,3 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-
-import { AuthContext } from "App";
 import styled from "@emotion/styled";
 import { PostWrapper } from "./PostWrapper";
 import Grid from '@mui/material/Grid2';
@@ -25,7 +21,7 @@ export const Posts = ({posts}) => {
           <Grid container spacing={4} justifyContent="center">
 
             {posts.map((post) => (
-              <Grid key={post.id} size={{ xs: 12, sm: 6, md: 4 }}>
+              <Grid key={post.id} xs={12} sm={6} md={4}>
                 <ItemWrapper>
                   <PostWrapper
                     post={post}

@@ -11,7 +11,8 @@ const options = {
 }
 
 const client = applyCaseMiddleware(axios.create({
-  baseURL: "http://localhost:3000/api/v1"
+  // baseURL: "http://localhost:3001/api/v1"
+  baseURL: "https://api.portfolio-example.com/api/v1"
 }), options)
 
 export default client

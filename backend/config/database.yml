@@ -50,9 +50,11 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: myapp_production
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV.fetch('DB_USERNAME', 'username') %>
   password: <%= ENV.fetch('DB_PASSWORD', 'password') %>
-  host: <%= ENV.fetch('DB_HOST') %>
+  host: <%= ENV.fetch('DB_HOST', 'production-story-db.c3aei0yyoora.ap-northeast-1.rds.amazonaws.com') %>
   port: 3306
+  database: production-story-db

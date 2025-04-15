@@ -21,6 +21,8 @@ Rails.application.routes.draw do
         resources :sessions, only: %i[index]
       end
 
+      resources :health_check, only: %i[index]
+
     end
   end
 end

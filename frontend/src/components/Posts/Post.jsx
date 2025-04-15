@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getPost, deletePost } from "lib/api/post";
 import { AuthContext } from "App";
-import sampleImg from "../../images/sampleImg1.jpg";
+import sampleImg from "../../images/no_image_yoko.jpg";
 import { Box, Card, CardContent, CardMedia, Button, Typography, CircularProgress } from "@mui/material";
 
 export const Post = () => {
@@ -64,7 +64,7 @@ export const Post = () => {
             <Typography variant="body2" color="text.secondary" sx={{ marginTop: 1 }}>
               使用ツール: {post.useTool}
             </Typography>
-            <Typography variant="body1" sx={{ marginTop: 2 }}>
+            <Typography variant="body1" sx={{ marginTop: 2, whiteSpace: 'pre-line' }}>
               {post.content}
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{ marginTop: 1 }}>

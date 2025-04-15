@@ -99,7 +99,7 @@ export const PostCreate = () => {
             onChange={(e) => setContent(e.target.value)}
             required
             multiline
-            rows={4}
+            rows={12}
             margin="normal"
           />
         </Box>
