@@ -4,7 +4,17 @@
 楽曲や歌ってみたを投稿した方がどういう機材を使用してるのか  
 解説等を投稿するサイトです。  
 URL:https://web.portfolio-example.com/  
-  
+
+ゲスト用アカウント
+>Name
+gestuser
+
+>mail
+gest@gmail.com
+
+>password
+gestuser
+
 技術構成  
 バックエンド（API）  
 ・使用技術：Ruby on Rails  
